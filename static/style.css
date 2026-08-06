@@ -1,0 +1,43 @@
+
+body {
+    background-color: #e0f7fa; 
+    font-family: sans-serif;
+    padding: 20px;
+}
+
+h1, h2, h3 {
+    text-align: center;
+    color: #006400; 
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+}
+
+li {
+    font-size: 25px;
+    color: green;
+    margin-bottom: 10px;
+}
+
+
+.form-container, .table-container {
+    background: rgba(255, 255, 255, 0.5); 
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px auto;
+    max-width: 600px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid green;
+    padding: 8px;
+    text-align: center;
+}

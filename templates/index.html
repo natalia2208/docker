@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Docker</title>
+        <link rel="stylesheet" href="../static/style.css">
+</head>
+<body>
+
+        <div class="status_bd">
+                <p>Estado BD: <strong>{{bd_status }}</strong></p>
+        </div>
+
+        <h2>Registro de Aprendiz</h2>
+
+        <div class="form-container">
+                <form action="/registrar" method="POST">
+                    <div>
+                        <label for="nombre">Nombre Completo:</label><br>
+                        <input type="text" id="nombre" name="nombre_completo" required>
+                    </div>
+                    <br>
+                    <div>
+                        <label for="documento">Número de documento:</label><br>
+                        <input type="text" id="documento" name="numero_documento" required>
+                    </div>
+                    <br>
+                    <div>
+                        <label for="ficha">Número de Ficha:</label><br>
+                        <input type="text" id="ficha" name="ficha" required>
+                    </div>
+                    <br>
+                    <button type="submit">Guardar Aprendiz</button>
+                </form>
+        </div>
+
+        <hr>
+
+        <h3>Registros en Base de Datos</h3>
+
+        <div class="table-container">
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre Completo</th>
+                        <th>Documento</th>
+                        <th>Ficha</th>
+                        <th>Fecha de Registro</th>
+                    </tr>
+                </thead>
+                <tbody>
+                        {% for aprendiz in aprendices %}
+                        <tr>
+                                <td>{{ aprendiz.id }}</td>
+                                <td>{{ aprendiz.nombre_completo }}</td>
+                                <td>{{ aprendiz.numero_documento }}</td>
+                                <td>{{ aprendiz.ficha }}</td>
+                                <td>{{ aprendiz.creado_en }}</td>
+                        </tr>
+                        {% else %}
+                        <tr>
+                                <td colspan="5" style="text-align: center;">No hay registros todavía. </td>
+                        </tr>
+                        {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+           <!-- <h1>Centro de Biotecnologia Agropecuaria</h1>
+        <h1>se ha entrado desde {{request.remote_addr}}</h1>
+        <ul>
+                <li>Natalia Collazos</li>
+        </ul>      -->
+
+</body>
+</html>
+
