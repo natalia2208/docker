@@ -2,7 +2,7 @@ name: Publicar Imagen en dockerhub
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "main", "master" ]
 
   jobs: 
     builds-and-push:
