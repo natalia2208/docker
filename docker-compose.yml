@@ -21,12 +21,13 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_ROOT_HOST: '%'
     volumes:
       - mysql-data:/var/lib/mysql
     networks:
       - red-cba
     healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      test: ["CMD", "mysqladmin", "ping", "-h"]
       interval: 10s
       timeout: 5s
       retries: 3
@@ -43,13 +44,23 @@ services:
     networks:
       - red-cba
     depends_on:
-      servidor-bd:
-        condition: service_healthy
+      - servidor-bd
     healthcheck: 
       test: ["CMD-SHELL", "curl -f http://localhost:5050/ || exit 1"]
       interval: 10s
       timeout: 5s
       retries: 3
+
+  uptime-kuma:
+    image: louislam/uptime-kuma:1
+    container_name: uptime-kuma-ejemplo
+    restart: always
+    ports:
+      - "3001:3001"
+    volumes:
+      - ./uptime-kuma:/app/data
+    networks:
+      - red-cba
 
 networks:
   red-cba:
@@ -58,3 +69,5 @@ networks:
 volumes:
   mysql-data:
     name: mysql-data
+  uptime-kuma-data:
+    name: uptime-kuma-data

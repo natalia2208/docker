@@ -1,11 +1,11 @@
 from flask import Flask, request, render_template, redirect, url_for
 import pymysql
-
+import time
 
 app  = Flask(__name__)
 
 db_config = {
-  		    "host":  "servidor-bd",
+  		    "host":  "servidor-bd-ejemplo",
  			"user": "root",
  			"password": "sena123",
  			"database": "adso_db",
@@ -15,8 +15,16 @@ db_config = {
 }
 
 def obtener_conexion():
-
-	return pymysql.connect(**db_config)
+	max_retries = 10
+    for attempt in range(max_retries):
+        try:
+            return pymysql.connect(**db_config)
+        except pymysql.err.OperationalError as e:
+            if attempt < max_retries - 1:
+                print(f"Base de datos no lista aún. Esperando... (Intento {attempt + 1}/{max_retries})")
+                time.sleep(3)
+            else:
+                raise e
 
 def crear_tabla_si_no_existe():
 
