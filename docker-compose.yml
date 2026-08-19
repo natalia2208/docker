@@ -35,8 +35,6 @@ services:
   app_backend:
     image: natalia2208/api-ejemplo:latest
     container_name: app-backend-ejemplo
-    volumes:
-      - .:/home/natalia/Proyectos/proyecto-terminal/
     environment:
       FLASK_ENV: development
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
