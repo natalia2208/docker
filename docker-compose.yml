@@ -33,7 +33,7 @@ services:
       retries: 3
 
   app_backend:
-    build: .
+    image: natalia2208/api-ejemplo:latest
     container_name: app-backend-ejemplo
     volumes:
       - .:/home/natalia/Proyectos/proyecto-terminal/
