@@ -59,7 +59,7 @@ def main():
             cursor.execute("SELECT * FROM aprendices ORDER BY id DESC")
             aprendices = cursor.fetchall()
         conn.close()
-        bd_status = "CONEXION EXITOSA Y PRUEBA DE CI/CD EXITOSA"
+        bd_status = "CONEXION EXITOSA Y PRUEBA DE CI/CD y TEST EXITOSO"
     except Exception as e:
         bd_status = f"Error de conexión: {e}"
 
