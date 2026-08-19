@@ -23,7 +23,7 @@ jobs:
         with:
           context: .
           push: true
-          tags: natalia2208/api-ejemplo
+          tags: natalia2208/api-ejemplo:latest
 
       - name: Desplegar el servidor cloud
         uses: appleboy/ssh-action@v1.0.3
@@ -34,4 +34,4 @@ jobs:
           script: |
             cd ~/docker
             docker compose pull app_backend
-            docker compose up -d
+            docker compose up -d 
