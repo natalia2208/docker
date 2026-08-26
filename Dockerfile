@@ -1,4 +1,4 @@
-FROM python
+FROM python:3.12-slim
 WORKDIR /app
 
 # Actualiza el sistema base y fuerza la actualización de herramientas vulnerables
