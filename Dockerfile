@@ -1,6 +1,6 @@
 FROM python 
 WORKDIR /home/natalia/Proyectos/proyecto-terminal/
-COPY requirements.txt .
+
 
 
 # Actualiza el sistema base y fuerza la actualización de herramientas globales
