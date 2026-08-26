@@ -1,14 +1,15 @@
 from flask import Flask, request, render_template, redirect, url_for
 import pymysql
 import time
+import os
 
 app  = Flask(__name__)
 
 db_config = {
               "host":  "servidor-bd-ejemplo",
              "user": "root",
-             "password": "sena123",
-             "database": "adso_db",
+             "password": os.getenv("MYSQL_ROOT_PASSWORD"),
+             "database": os.getenv("MYSQL_DATABASE"),
             "connect_timeout": 3,
             "cursorclass": pymysql.cursors.DictCursor #devuele los datos como diccionario para HTML 
             
@@ -85,7 +86,11 @@ def registrar():
         return redirect(url_for("main"))
 
 if __name__== "__main__":
-    app.run(host="0.0.0.0", port = 5050, debug = True)
+   # app.run(host="0.0.0.0", port = 5050, debug = True)
+    debug_mode = os.getenv("FLASK_DEBUG", "False").lower() in ("true", "1")
+    host_ip = os.getenv("FLASK_HOST", "127.0.0.1")
+    
+    app.run(host=host_ip, port=5050, debug=debug_mode)
 
 
 
