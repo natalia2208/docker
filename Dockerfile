@@ -1,14 +1,12 @@
-FROM python 
-WORKDIR /home/natalia/Proyectos/proyecto-terminal/
+FROM python
+WORKDIR /app
 
-
-
-# Actualiza el sistema base y fuerza la actualización de herramientas globales
+# Actualiza el sistema base y fuerza la actualización de herramientas vulnerables
 RUN apt-get update && apt-get upgrade -y && rm -rf /var/lib/apt/lists/*
-RUN pip install --no-cache-dir --upgrade pip "setuptools>=78.1.1"
+RUN pip install --no-cache-dir --upgrade pip "setuptools>=78.1.1" "msgpack>=1.2.1"
 
 COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir --upgrade -r requirements.txt
 
 COPY . .
 EXPOSE 5050
