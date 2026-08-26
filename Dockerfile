@@ -1,12 +1,8 @@
-FROM python
-WORKDIR /app
-
-RUN apt-get update && apt-get upgrade -y 
-
+FROM python:3.14-slim
+RUN apt-get update && apt-get upgrade -y
+WORKDIR /home/capsdevp/Documentos/workspace/docker/my-app/
 COPY requirements.txt .
-
-RUN pip install  -r requirements.txt
-
+RUN pip install -r requirements.txt
 COPY . .
 EXPOSE 5050
 CMD ["python3", "sample_app.py"]

@@ -6,13 +6,13 @@ import os
 app  = Flask(__name__)
 
 db_config = {
-              "host":  "servidor-bd-ejemplo",
-             "user": "root",
-             "password": os.getenv("MYSQL_ROOT_PASSWORD"),
-             "database": os.getenv("MYSQL_DATABASE"),
+            "host":  "servidor-bd-ejemplo",
+            "user": "root",
+            "password": os.getenv("MYSQL_ROOT_PASSWORD"),
+            "database": os.getenv("MYSQL_DATABASE"),
             "connect_timeout": 3,
-            "cursorclass": pymysql.cursors.DictCursor #devuele los datos como diccionario para HTML 
-            
+            "cursorclass": pymysql.cursors.DictCursor, #devuele los datos como diccionario para HTML 
+            "autocommit": True
 }
 
 def obtener_conexion():
@@ -87,10 +87,10 @@ def registrar():
 
 if __name__== "__main__":
    # app.run(host="0.0.0.0", port = 5050, debug = True)
-    debug_mode = os.getenv("FLASK_DEBUG", "False").lower() == "true"
-    host_ip = os.getenv("FLASK_HOST")
+    debug_mode = os.getenv("FLASK_DEBUG", "False")
+    host = os.getenv("FLASK_HOST")
     
-    app.run(host=host_ip, port=5050, debug=debug_mode)
+    app.run(host=host, port=5050, debug=debug_mode)
 
 
 
