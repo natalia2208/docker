@@ -1,13 +1,11 @@
-FROM python:3.12-slim
+FROM python
 WORKDIR /app
 
-# Actualiza el sistema base y fuerza la actualización de herramientas vulnerables
-RUN apt-get update && apt-get upgrade -y && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get upgrade -y 
 
 COPY requirements.txt .
 
-RUN pip install --no-cache-dir --upgrade pip && \
-    pip install --force-reinstall -r requirements.txt
+RUN pip install  -r requirements.txt
 
 COPY . .
 EXPOSE 5050
