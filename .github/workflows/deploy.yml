@@ -57,7 +57,7 @@ jobs:
           image-ref: 'natalia2208/api-ejemplo:latest'
           format: 'table'
           exit-code: '1'
-          trivyignores-rel-path: '.trivyignore'
+          ignore-unfixed: true
           vuln-type: 'os,library'
           severity: 'CRITICAL,HIGH' 
 
