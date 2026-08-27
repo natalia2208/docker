@@ -36,9 +36,7 @@ services:
     image: natalia2208/api-ejemplo:latest
     container_name: app-backend-ejemplo
     environment:
-      FLASK_ENV: production
-      FLASK_DEBUG: "False"
-      FLASK_HOST: "0.0.0.0"
+      FLASK_ENV: development
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       MYSQL_DATABASE: ${MYSQL_DATABASE}
     networks:
