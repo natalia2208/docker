@@ -86,6 +86,7 @@ def registrar():
         return redirect(url_for("main"))
 
 if __name__== "__main__":
+    MYSQL_PASSWORD = "super_secret_563"
    # app.run(host="0.0.0.0", port = 5050, debug = True)
     debug_mode = os.getenv("FLASK_DEBUG", "False").lower() == "true"
     host = os.getenv("FLASK_HOST") or "0.0.0.0"  # nosec B104
