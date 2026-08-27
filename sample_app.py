@@ -87,8 +87,8 @@ def registrar():
 
 if __name__== "__main__":
    # app.run(host="0.0.0.0", port = 5050, debug = True)
-    debug_mode = os.getenv("FLASK_DEBUG", "False")
-    host = os.getenv("FLASK_HOST")
+    debug_mode = os.getenv("FLASK_DEBUG", "False").lower() == "true"
+    host = os.getenv("FLASK_HOST") or "0.0.0.0"  # nosec B104
     
     app.run(host=host, port=5050, debug=debug_mode)
 
