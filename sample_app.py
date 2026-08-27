@@ -85,11 +85,12 @@ def registrar():
 
         return redirect(url_for("main"))
 
-if __name__== "__main__":
-   # app.run(host="0.0.0.0", port = 5050, debug = True)
-    debug_mode = os.getenv("FLASK_DEBUG", "False")
-    host = os.getenv("FLASK_HOST")
+if __name__ == "__main__":
+    host = os.getenv("FLASK_HOST", "0.0.0.0")
     
+    debug_env = os.getenv("FLASK_DEBUG", "False").lower()
+    debug_mode = debug_env in ("true", "1", "t")
+
     app.run(host=host, port=5050, debug=debug_mode)
 
 
