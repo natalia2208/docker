@@ -6,4 +6,4 @@ def test_ejemplo():
     client = app.test_client()
     response = client.get('/') 
     
-    assert response.status_code == 500
+    assert response.status_code == 200
